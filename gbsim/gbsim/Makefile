@@ -26,7 +26,8 @@ IPATH += ${simavr}/simavr/sim
 VPATH = .
 VPATH += ../parts
 
-LDFLAGS += -lSDL2
+#LDFLAGS += -lSDL2
+LDFLAGS +=  -lm -ldinput8 -ldxguid -ldxerr8 -luser32 -lgdi32 -lwinmm -limm32 -lole32 -loleaut32 -lshell32 -lversion -luuid
 
 all: obj ${firmware} ${target}
 

@@ -56,7 +56,7 @@ LFLAGS		= -L/opt/local/lib/
 endif
 else
 LINUX_AVR_ROOTS := /usr/lib/avr /usr/avr /opt/cross/avr/avr
-AVR_ROOT := $(firstword $(wildcard $(LINUX_AVR_ROOTS)))
+AVR_ROOT ?= $(firstword $(wildcard $(LINUX_AVR_ROOTS)))
 ifeq (${AVR_ROOT},)
 $(error No avr-libc root directory found. Tried the following paths: $(LINUX_AVR_ROOTS))
 endif
@@ -75,7 +75,9 @@ CFLAGS      += -I${PREFIX}/include
 LDFLAGS		+= -L/lib -L/local/lib
 CFLAGS 		+= -DNO_COLOR
 else
+ifeq (,$(findstring MINGW,$(shell uname)))
 CFLAGS 		+= -fPIC
+endif
 endif
 endif
 
@@ -93,13 +95,14 @@ SHELL	 	:= ${shell which bash}
 	
 OBJ 		= obj-${shell $(CC) -dumpmachine}
 LIBDIR		= ${shell pwd}/${SIMAVR}/${OBJ}
-LDFLAGS 	+= -L${LIBDIR} -lsimavr 
+LDFLAGS   := ${LIBDIR}/libsimavr.a $(LDFLAGS)
+#LDFLAGS 	+= -L${LIBDIR}
 
-LDFLAGS 	+= -lelf 
+#LDFLAGS 	+= -lelf 
 
-ifeq (${WIN}, Msys)
+#ifeq (${WIN}, Msys)
 LDFLAGS      += -lws2_32
-endif
+#endif
 
 ifeq (${shell uname}, Linux)
 ifeq ($(RELEASE),1)

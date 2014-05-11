@@ -1,0 +1,13 @@
+# The directory with "Makefile.mingw" in it
+TOP := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
+AVR_ROOT := $(wildcard $(TOP)/../avr-libc-*)
+LIBELF_ROOT := $(wildcard $(TOP)/../libelf-*)
+PTHREADS_ROOT := $(wildcard $(TOP)/../pthreads-*)
+CFLAGS += -I$(STAGE)/include
+# -lmingw32 makes the linker use SDL's WinMain, see
+# http://osdir.com/ml/gnu.mingw.devel/2003-10/msg00003.html
+LDFLAGS += -Wl,-subsystem,console -lmingw32 $(patsubst %,$(STAGE)/lib/%.a,libSDL2 libSDL2main libpthreadGC1 libelf)
+
+export AVR_ROOT LIBELF_ROOT PTHREADS_ROOT CFLAGS LDFLAGS
+
+include Makefile

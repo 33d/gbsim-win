@@ -187,7 +187,7 @@ void main_loop() {
     }
 }
 
-int main(int argc, const char* argv[]) {
+int main(int argc, char* argv[]) {
     int r = 0;
 
     elf_firmware_t f;

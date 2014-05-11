@@ -32,7 +32,6 @@ extern "C" {
 
 #include <windows.h>
 #include <winsock2.h>
-#include <ws2tcpip.h>
 
 #define send(sockfd, buf, len, flags) \
 	(ssize_t)send( (sockfd), (const char *)(buf), (len), (flags))
