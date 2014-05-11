@@ -1,0 +1,4 @@
+stage
+*.o
+libelf-*/**/*.a
+pthreads-w32-*/**/*.a
