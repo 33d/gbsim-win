@@ -75,9 +75,6 @@ CFLAGS      += -I${PREFIX}/include
 LDFLAGS		+= -L/lib -L/local/lib
 CFLAGS 		+= -DNO_COLOR
 else
-ifeq (,$(findstring MINGW,$(shell uname)))
-CFLAGS 		+= -fPIC
-endif
 endif
 endif
 
