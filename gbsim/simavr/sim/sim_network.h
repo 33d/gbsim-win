@@ -30,8 +30,8 @@ extern "C" {
 
 // Windows with MinGW
 
-#include <windows.h>
 #include <winsock2.h>
+#include <windows.h>
 
 #define send(sockfd, buf, len, flags) \
 	(ssize_t)send( (sockfd), (const char *)(buf), (len), (flags))
