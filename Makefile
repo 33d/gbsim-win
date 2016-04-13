@@ -11,13 +11,8 @@ LIBSDL2_A := $(STAGE)/lib/libSDL2.a
 
 export STAGE V
 
-gbsim: $(LIBELF_A) $(LIBPTHREAD_W32_A) $(LIBSDL2_A)
+gbsim: $(LIBELF_A)  $(LIBSDL2_A)
 	$(MAKE) -C gbsim -f Makefile.mingw build-gbsim
-
-$(LIBPTHREAD_W32_A): $(STAGE)
-	$(MAKE) -C $(LIBPTHREADS_W32_SRC) GC-static-debug
-	cp $(LIBPTHREADS_W32_SRC)/libpthreadGC1.a $(STAGE)/lib
-	cp $(LIBPTHREADS_W32_SRC)/*.h $(STAGE)/include
 
 $(LIBSDL2_A): $(STAGE)
 	cp -r $(TOP)/SDL2-2.0.3/i686-w64-mingw32/* $(STAGE)
@@ -32,7 +27,6 @@ $(STAGE):
 	mkdir -p $(STAGE)
 
 clean:
-	$(MAKE) -C $(LIBPTHREADS_W32_SRC) clean
 	$(MAKE) -C $(LIBELF_SRC) clean
 	$(MAKE) -C gbsim -f Makefile.mingw clean
 	-rm -Rf $(STAGE)
