@@ -41,6 +41,6 @@ msys2 [comes with SDL][3] and [libelf][4], so we don't need those either.  That 
 [2]: https://sourceforge.net/p/msys2/wiki/MSYS2%20installation/
 [3]: https://github.com/Alexpux/MINGW-packages/tree/master/mingw-w64-SDL2
 [4]: https://github.com/Alexpux/MINGW-packages/tree/master/mingw-w64-libelf
-[5]: https://github.com/33d/gbsim-win
+[5]: https://github.com/33d/gbsim
 [6]: http://upx.sourceforge.net/
 
