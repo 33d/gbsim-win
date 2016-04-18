@@ -1,6 +1,8 @@
 [gbsim][5] Windows port
 ===
 
+**This is DEPRECATED** - use [the original repository][5] instead.
+
 Building
 ---
 
